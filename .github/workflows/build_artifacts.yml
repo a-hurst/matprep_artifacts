@@ -18,7 +18,7 @@ jobs:
         python-version: '3.8'
 
     - name: Download MATLAB packages and test data
-      run: python helpers/pipeline_setup.py
+      run: python config/pipeline_setup.py
 
     - name: Install MATLAB
       uses: matlab-actions/setup-matlab@v0
@@ -34,4 +34,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: matprep-artifacts
-        path: artifacts/
+        path: artifacts/*
