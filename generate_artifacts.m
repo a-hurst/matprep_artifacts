@@ -9,8 +9,25 @@
 %%% Step 0: Initialize MATLAB environment for running PREP %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Load settings from settings.m file
-run('settings.m');
+% Important filenames and paths
+sep = '/';
+filename = 'S004R04.edf';
+montage_name = 'standard-10-5-cap385.elp';
+package_dir = 'deps';
+artifact_dir = 'artifacts';
+eeglab_path = [package_dir sep 'EEGLAB'];
+matprep_path = [package_dir sep 'PREP' sep 'PrepPipeline'];
+montage_dir = [eeglab_path sep 'plugins' sep 'dipfit' sep 'standard_BESA'];
+montage_path = [montage_dir sep montage_name];
+
+% Intitialize PREP parameters
+powerline_hz = 60;
+params = struct();
+params.name = filename;
+params.detrendType = 'high pass';
+params.detrendCutoff = 1;
+params.referenceType = 'robust';
+params.keepFiltered = false;
 
 % Load EEGLAB and MATLAB PREP
 addpath(eeglab_path);
