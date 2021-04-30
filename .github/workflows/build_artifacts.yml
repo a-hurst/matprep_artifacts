@@ -28,7 +28,7 @@ jobs:
     - name: Run MATLAB PREP
       uses: matlab-actions/run-command@v0
       with:
-        command: generate_artifacts
+        command: "warning('off');run('generate_artifacts.m');exit;"
 
     - name: Upload PREP artifacts
       uses: actions/upload-artifact@v2
