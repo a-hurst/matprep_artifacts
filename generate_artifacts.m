@@ -22,6 +22,12 @@ eeglab nogui;
 plugin_askinstall('Biosig', [], true);
 warning('off');
 
+% Print version information to CI
+fprintf('\n\nVersion Info:\n');
+fprintf([' - MATLAB: ' version '\n']);
+fprintf([' - EEGLAB: ' eeg_getversion() '\n']);
+fprintf([' - PREP: ' getPrepVersion '\n\n']);
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Step 1: Load raw data into EEGLAB and prepare for PREP %%%
