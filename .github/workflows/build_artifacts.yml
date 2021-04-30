@@ -6,7 +6,7 @@ on: [push]
 jobs:
   build:
     name: Build MATLAB PREP Artifacts
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Check out repository
