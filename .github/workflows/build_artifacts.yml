@@ -31,6 +31,7 @@ jobs:
         command: generate_artifacts
 
     - name: Upload PREP artifacts
+      uses: actions/upload-artifact@v2
       with:
         name: matprep-artifacts
         path: artifacts/
