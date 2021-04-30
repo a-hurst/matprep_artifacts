@@ -1,0 +1,14 @@
+# Ignore all invisible files unless explicitly requested
+**/.*
+!.gitignore
+!.github
+
+# Ignore products of scripts
+deps/*
+artifacts/*
+temp/*
+**/*.zip
+**/*.edf
+**/*.mat
+**/*.set
+**/*.fdt
