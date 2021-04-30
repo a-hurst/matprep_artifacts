@@ -6,7 +6,7 @@ on: [push]
 jobs:
   build:
     name: Build MATLAB PREP Artifacts
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Check out repository
@@ -23,7 +23,7 @@ jobs:
     - name: Install MATLAB
       uses: matlab-actions/setup-matlab@v0
       with:
-        release: latest
+        release: 2021a
 
     - name: Run MATLAB PREP
       uses: matlab-actions/run-command@v0

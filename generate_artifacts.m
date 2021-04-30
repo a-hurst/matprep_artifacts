@@ -10,7 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load settings from settings.m file
-settings;
+run('settings.m');
 
 % Load EEGLAB and MATLAB PREP
 addpath(eeglab_path);
