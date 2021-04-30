@@ -9,6 +9,11 @@
 %%% Step 0: Initialize MATLAB environment for running PREP %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Test writing with fopen outside of eeglab
+fileID = fopen([artifact_dir sep '1_test_file.txt'], 'w');
+fprintf(fileID,'Hello Hello\n\n');
+fclose(fileID);
+
 % Initialize pipeline settings
 addpath('config');
 settings;
@@ -104,7 +109,7 @@ fprintf('\n\n=== Removing Trends Pre-CleanLine... ===\n\n');
 EEG.etc.noiseDetection.detrend = detrend;
 defaults = getPrepDefaults(EEG, 'detrend');
 params = checkPrepDefaults(detrend, params, defaults);
-save_set(EEGNew, [outdir sep '2_matprep_removetrend']);
+save_set(EEGNew, [artifact_dir sep '2_matprep_removetrend']);
 
 % Perform cleanline on data and put trend back
 fprintf('\n\n=== Performing CleanLine... ===\n\n');
@@ -116,18 +121,18 @@ EEG.data(lineChannels, :) = ...
     - EEGNew.data(lineChannels, :) ...
     + EEGClean.data(lineChannels, :);
 clear EEGNew;
-save_set(EEG, [outdir sep '3_matprep_cleanline']);
+save_set(EEG, [artifact_dir sep '3_matprep_cleanline']);
 
 % Get detrended data prior to rereferencing & save a copy
 fprintf('\n\n=== Get Detrended Signal Pre-Reference... ===\n\n');
 [EEGNew, detrend] = removeTrend(EEG, params);
-save_set(EEGNew, [outdir sep '4_matprep_pre_reference']);
+save_set(EEGNew, [artifact_dir sep '4_matprep_pre_reference']);
 clear EEGNew;
  
 % Perform robust re-referencing on data
 fprintf('\n\n=== Performing Robust Referencing... ===\n\n');
 [EEG, referenceOut] = performReference(EEG, params);
-save_set(EEG, [outdir sep '5_matprep_post_reference']);
+save_set(EEG, [artifact_dir sep '5_matprep_post_reference']);
 
 % Save detailed internal PREP details to a .mat
 prep_info = EEG.etc;
