@@ -9,14 +9,15 @@
 %%% Step 0: Initialize MATLAB environment for running PREP %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Test writing with fopen outside of eeglab
-fileID = fopen([artifact_dir sep '1_test_file.txt'], 'w');
-fprintf(fileID,'Hello Hello\n\n');
-fclose(fileID);
 
 % Initialize pipeline settings
 addpath('config');
 settings;
+
+% Test writing with fopen outside of eeglab
+fileID = fopen([artifact_dir sep '1_test_file.txt'], 'w');
+fprintf(fileID,'Hello Hello\n\n');
+fclose(fileID);
 
 % Load EEGLAB and MATLAB PREP
 addpath(eeglab_path);
