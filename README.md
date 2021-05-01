@@ -1,10 +1,12 @@
 # matprep_artifacts
 
+![GitHub Actions Status](https://github.com/a-hurst/matprep_artifacts/actions/workflows/build_artifacts.yml/badge.svg)
+
 A set of scripts to run the full MATLAB PREP pipeline on a given test file, saving `.set` and `.mat` artifacts at each step of the process.
 
 ![Script running locally](output.png)
 
-These scripts are designed to help the automated testing of [pyprep](https://github.com/sappelhoff/pyprep) against MATLAB PREP for numeric equivalence.
+These scripts are designed to help the automated testing of [pyprep](https://github.com/sappelhoff/pyprep) against MATLAB PREP for numeric equivalence. You can download the latest set of artifacts [here](https://github.com/a-hurst/matprep_artifacts/releases/latest).
 
 
 ## Artifacts
