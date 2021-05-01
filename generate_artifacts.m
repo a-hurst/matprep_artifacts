@@ -14,11 +14,6 @@
 addpath('config');
 settings;
 
-% Test writing with fopen outside of eeglab
-fileID = fopen([artifact_dir sep '1_test_file.txt'], 'w');
-fprintf(fileID,'Hello Hello\n\n');
-fclose(fileID);
-
 % Load EEGLAB and MATLAB PREP
 addpath(eeglab_path);
 addpath(genpath(matprep_path));
@@ -163,5 +158,5 @@ end
 
 % Function for saving EEG data to a single .set file
 function [] = save_set(EEG, outpath);
-    pop_saveset(EEG, outpath, 'savemode', 'onefile');
+    pop_saveset(EEG, 'filename', outpath, 'savemode', 'onefile');
 end
