@@ -131,12 +131,11 @@ fprintf('\n\n=== Performing Robust Referencing... ===\n\n');
 save_set(EEG, [artifact_dir sep '5_matprep_post_reference']);
 
 % Save detailed internal PREP details to a .mat
-prep_info = EEG.etc;
-prep_info.noiseDetection.reference = referenceOut;
-prep_info.noiseDetection.fullReferenceInfo = true;
-prep_info.noiseDetection.interpolatedChannelNumbers = ...
-    referenceOut.interpolatedChannels.all;
-prep_info.noiseDetection.stillNoisyChannelNumbers = ...
+prep_info = EEG.etc.noiseDetection;
+prep_info.reference = referenceOut;
+prep_info.fullReferenceInfo = true;
+prep_info.interpolatedChannelNumbers = referenceOut.interpolatedChannels.all;
+prep_info.stillNoisyChannelNumbers = ...
     referenceOut.noisyStatistics.noisyChannels.all;
 save([artifact_dir sep 'matprep_info'], 'prep_info');
 
