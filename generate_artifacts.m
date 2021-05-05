@@ -139,6 +139,26 @@ prep_info.stillNoisyChannelNumbers = ...
     referenceOut.noisyStatistics.noisyChannels.all;
 save([artifact_dir sep 'matprep_info'], 'prep_info');
 
+% Print out first-pass NoisyChannels results for CI
+fprintf('\nInitial findNoisyChannels Results:\n');
+noisy_orig = referenceOut.noisyStatisticsOriginal.noisyChannels;
+ch_names = prep_info.originalChannelLabels;
+bad_types = fieldnames(noisy_orig);
+for n = 1:numel(bad_types)
+    bad_type = bad_types{n};
+    chan_idx = noisy_orig.(bad_type);
+    fprintf([' - ' bad_type ' = [']);
+    for ch = 1:numel(chan_idx)
+        if (ch > 1)
+            fprintf(' ');
+        end
+        fprintf(ch_names{chan_idx(ch)});
+    end
+    fprintf(']\n');
+end
+fprintf('\n');
+
+
 pretty_header([filename ' complete!']);
 
 
