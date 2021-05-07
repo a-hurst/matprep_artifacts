@@ -20,14 +20,16 @@ os.mkdir(package_dir)
 os.mkdir(artifact_dir)
 
 
-# Download test EEG data (curently using S004R04 from the BCI2000 dataset)
+# Download test EEG data (curently using S004R01 from the BCI2000 dataset)
 
-eeg_filename = 'S004R04.edf'
-eeg_url = 'https://www.physionet.org/files/eegmmidb/1.0.0/S004/{0}?download'
+subject = 'S004'
+run = 'R01'
+eeg_filename = '{0}{1}.edf'.format(subject, run)
+eeg_url = 'https://www.physionet.org/files/eegmmidb/1.0.0/{0}/{1}?download'
 
 print("* Downloading EEG test data...")
 try:
-    mod_http = urlopen(eeg_url.format(eeg_filename))
+    mod_http = urlopen(eeg_url.format(subject, eeg_filename))
     with open(eeg_filename, 'wb') as out:
         out.write(mod_http.read())
 except (URLError, HTTPError):

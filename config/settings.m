@@ -7,7 +7,7 @@
 
 sep = '/';
 
-filename = 'S004R04.edf';
+filename = 'S004R01.edf';
 montage_name = 'standard-10-5-cap385.elp';
 package_dir = 'deps';
 artifact_dir = 'artifacts';
