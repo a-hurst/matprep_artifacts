@@ -28,3 +28,10 @@ params.detrendType = 'high pass';
 params.detrendCutoff = 1;
 params.referenceType = 'robust';
 params.keepFiltered = false;
+
+
+% Channels to make bad by various criteria
+
+bad_by_nan = {'FC5'};
+bad_by_flat = {'FC3'};
+bad_by_dropout = {'FPz'};

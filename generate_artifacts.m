@@ -63,6 +63,28 @@ end
 EEG = pop_chanedit(EEG, 'lookup', montage_path);
 EEG = eeg_checkset(EEG);
 
+% Create bad-by-NaN channels
+ch_names = {EEG.chanlocs.labels};
+for ch = 1:numel(bad_by_nan)
+    ch_idx = find(matches(ch_names, bad_by_nan{ch}));
+    EEG.data(ch_idx, 5) = NaN;
+end
+
+% Create bad-by-flat channels
+for ch = 1:numel(bad_by_flat)
+    ch_idx = find(matches(ch_names, bad_by_flat{ch}));
+    EEG.data(ch_idx, :) = EEG.data(ch_idx, :) * 1e-13;
+end
+
+% Create bad-by-dropout channels
+signal_len = length(EEG.data);
+for ch = 1:numel(bad_by_dropout)
+    ch_idx = find(matches(ch_names, bad_by_dropout{ch}));
+    % Make 2nd and 4th quarters of channel recording flat
+    EEG.data(ch_idx, floor(signal_len / 4):floor(signal_len / 2)) = 0;
+    EEG.data(ch_idx, floor(3 * signal_len / 4):end) = 0;
+end
+
 % Prepare for PREP (copy/pasted from PREP internals)
 EEG.etc.noiseDetection = ...
     struct(...
