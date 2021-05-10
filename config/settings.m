@@ -34,4 +34,4 @@ params.keepFiltered = false;
 
 bad_by_nan = {'FC5'};
 bad_by_flat = {'FC3'};
-bad_by_dropout = {'FPz'};
+bad_by_dropout = {'Fpz'};

@@ -53,8 +53,9 @@ params.lineFrequencies = powerline_hz:powerline_hz:EEG.srate/2;
 for n = eeg_channels
     % Strip trailing '.'s from the channel names
     tmp = strrep(EEG.chanlocs(n).labels, '.', '');
-    % Fix channel capitalization (i.e., all-caps except z)
+    % Fix channel capitalization (i.e., all-caps except z and sometimes p)
     tmp = strrep(upper(tmp), 'Z', 'z');
+    tmp = strrep(tmp, 'FP', 'Fp');
     % Write fixed label back to EEG object
     EEG.chanlocs(n).labels = tmp;
 end
