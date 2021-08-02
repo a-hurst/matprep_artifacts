@@ -20,7 +20,7 @@ os.mkdir(package_dir)
 os.mkdir(artifact_dir)
 
 
-# Download test EEG data (curently using S004R01 from the BCI2000 dataset)
+# Download test EEG data (currently using S004R01 from the BCI2000 dataset)
 
 subject = 'S004'
 run = 'R01'

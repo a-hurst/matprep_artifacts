@@ -18,7 +18,7 @@ montage_dir = [eeglab_path sep 'plugins' sep 'dipfit' sep 'standard_BESA'];
 montage_path = [montage_dir sep montage_name];
 
 
-% Intitialize PREP parameters
+% Initialize PREP parameters
 
 powerline_hz = 60;
 
