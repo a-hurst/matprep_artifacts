@@ -1,24 +1,23 @@
-### Helper script for setting up MATLAB PREP CI environment ###
+"""Set up MATLAB PREP CI environment."""
 
-# Author: Austin Hurst
+# Authors: Austin Hurst
+#          Stefan Appelhoff
 
-import os
+from pathlib import Path
 import shutil
 from zipfile import ZipFile
 from urllib.request import urlopen
 from urllib.error import URLError, HTTPError
 
-
 # Initialize required directories
 
-download_dir = 'temp'
-package_dir = 'deps'
-artifact_dir = 'artifacts'
+download_dir = Path('temp')
+package_dir = Path('deps')
+artifact_dir = Path('artifacts')
 
-os.mkdir(download_dir)
-os.mkdir(package_dir)
-os.mkdir(artifact_dir)
-
+download_dir.mkdir(exist_ok=True)
+package_dir.mkdir(exist_ok=True)
+artifact_dir.mkdir(exist_ok=True)
 
 # Download test EEG data (currently using S004R01 from the BCI2000 dataset)
 
@@ -35,8 +34,6 @@ try:
 except (URLError, HTTPError):
     raise RuntimeError("Failed to download '{0}'".format(eeg_filename))
 
-
-
 # Download and extract EEGLAB and MATLAB PREP
 
 pkgs = {
@@ -48,7 +45,7 @@ for name, url in pkgs.items():
     print("* Downloading {0}...".format(name))
 
     # Download .zip to temporary folder
-    download_path = os.path.join(download_dir, '{0}.zip'.format(name))
+    download_path = download_dir / f'{name}.zip'
     try:
         mod_http = urlopen(url)
         with open(download_path, 'wb') as out:
@@ -60,8 +57,8 @@ for name, url in pkgs.items():
     with ZipFile(download_path, 'r') as z:
         z.extractall(package_dir)
         root_dir = z.namelist()[0].split('/')[0]
-        outpath = os.path.join(package_dir, root_dir)
+        outpath = package_dir / root_dir
 
     # Rename unzipped package folder to package name for consistency
-    pkg_path = os.path.join(package_dir, name)
+    pkg_path = package_dir / name
     shutil.move(outpath, pkg_path)
