@@ -37,7 +37,7 @@ except (URLError, HTTPError):
 # Download and extract EEGLAB and MATLAB PREP
 
 pkgs = {
-    "EEGLAB": "https://sccn.ucsd.edu/eeglab/currentversion/eeglab2021.0.zip",
+    "EEGLAB": "https://sccn.ucsd.edu/eeglab/currentversion/eeglab_current.zip",
     "PREP": "https://github.com/VisLab/EEG-Clean-Tools/archive/refs/heads/master.zip",
 }
 
