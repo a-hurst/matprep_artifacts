@@ -3,6 +3,8 @@ name: Build MATLAB PREP Artifacts via CI
 on:
   workflow_dispatch:
   push:
+  schedule:
+    - cron: "0 4 1 * *"
 
 jobs:
   build:
