@@ -35,9 +35,10 @@ except (URLError, HTTPError):
     raise RuntimeError("Failed to download '{0}'".format(eeg_filename))
 
 # Download and extract EEGLAB and MATLAB PREP
-
+# for current EEGLAB, see: https://sccn.ucsd.edu/eeglab/currentversion/eeglab_current.zip
+# for other EEGLAB versions, see: https://sccn.ucsd.edu/eeglab/download/daily/
 pkgs = {
-    "EEGLAB": "https://sccn.ucsd.edu/eeglab/currentversion/eeglab_current.zip",
+    "EEGLAB": "https://sccn.ucsd.edu/eeglab/download/daily/eeglab2024.2.zip",
     "PREP": "https://github.com/VisLab/EEG-Clean-Tools/archive/refs/heads/master.zip",
 }
 
